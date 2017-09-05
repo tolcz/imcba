@@ -42,8 +42,25 @@
 </style>
 
 <style type="text/css" id="form-designer-style">
-    /* Injected CSS Code */
-.form-label.form-label-auto {
+    	
+	#header {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+    }
+	#header #header-content {
+		margin: 5px;
+	}
+	
+	/* Injected CSS Code */
+    .form-label.form-label-auto {
         
         display: inline-block;
         float: left;
@@ -151,15 +168,11 @@
   
       .supernova {
         height: 100%;
-        background-repeat: repeat;
-        background-attachment: scroll;
         background-position: center top;
-      }
-      .supernova {
-        background-image: url("img/home.jpg");
+        background-image: url("img/approach.jpg");
       }
       #stage {
-        background-image: url("img/home.jpg");
+        background-image: url("img/approach.jpg");
       }
     
     .form-all {
@@ -169,16 +182,7 @@
     .form-all {
       position: relative;
     }
-    .form-all:before {
-      content: "";
-      background-image: url("img/IMC-BA_lrg-logo.png");
-      display: inline-block;
-      height: 41px;
-      position: absolute;
-      background-size: 110px 41px;
-      background-repeat: no-repeat;
-      width: 100%;
-    }
+
     .form-all {
       margin-top: 51px !important;
     }
@@ -232,8 +236,26 @@
     /*INIT-END*/
 });
 </script>
+
+<script>
+/* hide Safari warning page if a different browser */
+if( navigator.userAgent.indexOf("Safari") === -1 || navigator.userAgent.indexOf("Chrome") !== -1 )
+{
+	JotForm.hidePages[2] = true;
+}
+//window.alert(navigator.userAgent);
+</script>
+
 </head>
-<body>
+<body onload="document.form_72271005841246.reset();">
+
+<div id="header">
+    <div id="header-content">
+		<a href="http://www.imcba.com">
+      <center><img src="img/IMC-BA_lrg-logo.png" height="20" width="54"/></center></a>
+    </div>
+</div>
+
 <form class="jotform-form" action="https://submit.jotform.ca/submit/72271005841246/" method="post" name="form_72271005841246" id="72271005841246" accept-charset="utf-8">
   <input type="hidden" name="formID" value="72271005841246" />
   <div class="form-all">
