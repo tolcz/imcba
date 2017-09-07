@@ -1,19 +1,4 @@
 (function() {
-	var albumBucketName = 'upload.imcba';
-
-	// Initialize the Amazon Cognito credentials provider
-	AWS.config.region = 'us-east-1'; // Region
-	AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-		IdentityPoolId: 'us-east-1:8481ec77-6e38-4af6-9658-aad56ec1fb13',
-	});
-
-	//alert(AWS.config.credentials.identityId);
-
-	var s3 = new AWS.S3({
-	  apiVersion: 'latest',
-	  params: {Bucket: albumBucketName}
-	});
-	
   function WebRecorder() {
     var audioRecorder = {};
     var audioBlob; // this is empty if fallback
