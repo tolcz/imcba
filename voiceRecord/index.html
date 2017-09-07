@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Voice Recorder</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <style>
+    #time {color: #c0c0c0;}
+    #maxtime {color: #CC0000; display:none;}
+    #wrapper {
+      display: relative;
+    }
+    #errorMsg {
+      display: none;
+      padding: 2px;
+      color: #000000;
+      background: #E8E8E8;
+    }
+    .audiojs {
+      display: none;
+    }
+    .force-hide {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  </style>
+
+  <script src="//js.jotform.com/JotFormCustomWidget.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="js/audiojs/audio.js"></script>
+  <script src="js/flashRecorder/recorder.js"></script>
+  <script src="js/WebAudioRecorder/WebAudioRecorder.js"></script>
+  <script src="js/WebRecorder.js"></script>
+  <script src="js/main-script.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="record-stuff">
+            <button class="btn btn-warning" id="record" disabled><i class="fa fa-microphone"></i> <span>Record</span></button>
+            <button class="btn btn-default" id="play" disabled><i class="fa fa-play"></i> <span>Play</span></button>
+            <button class="btn btn-default" id="stop" style="display:none;"><i class="fa fa-stop"></i> <span>Stop</span></button>
+            <span id="time">0:00</span><span id="maxtime">/ 1:00</span>
+        </div>
+        <div id="VoiceRecStatus"></div>
+        <div id="flash-container" class="force-hide"></div>
+    </div>
+    <div id="errorMsg"></div>
+    <iframe id="uploadTrg" name="uploadTrg" height="0" width="0" frameBorder="0" scrolling="yes"></iframe>
+    <audio src="sound/beep.mp3" id="beepNotif" preload="auto"></audio>
+</body>
+</html>
