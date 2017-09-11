@@ -1,4 +1,6 @@
 <?php 
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
 	//include config file
 	include_once dirname(__FILE__)."/php/sGlobals.php";
 	include_once dirname(__FILE__)."/php/fx.gps.php";
@@ -15,7 +17,6 @@
 	$past = $present = $future = 0.0;
 
 	
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		$sql = "INSERT INTO mindtime.imcba_survey01
 		(past1,
@@ -79,7 +80,6 @@
 		$past    = ($past - 3) * 25;
 		$present = ($present - 3) * 25;
 		$future  = ($future - 3) * 25;
-	}
 
 	$gpsfx = new GPSFX(300);
 	$tempo = $gpsfx->calcGPS($future, $past, $present);
@@ -349,3 +349,7 @@
 </body>
 
 </html>
+
+<?php 
+	}
+?>
