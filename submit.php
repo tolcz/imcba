@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// define variables and set to empty values
 	$past = $present = $future = 0.0;
 
-	$sql = "INSERT INTO mindtime.imcba_survey01
+	$sql = "INSERT INTO imcba_survey01
 	(past1,
 	past2,
 	past3,
