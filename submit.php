@@ -1,5 +1,5 @@
 <?php 
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	//include config file
 	include_once dirname(__FILE__)."/php/sGlobals.php";
@@ -16,76 +16,72 @@
 	// define variables and set to empty values
 	$past = $present = $future = 0.0;
 
+	$sql = "INSERT INTO mindtime.imcba_survey01
+	(past1,
+	past2,
+	past3,
+	pres1,
+	pres2,
+	pres3,
+	future1,
+	future2,
+	future3,
+	rec1,
+	rec2,
+	rec3,
+	age,
+	sex,
+	email,
+	fname,
+	mname,
+	lname,
+	phone,
+	php_id) 
+	VALUES("
+	.$_POST["q3_past_1"].","
+	.$_POST["q6_past_2"].","
+	.$_POST["q10_past_3"].","
+	.$_POST["q4_present_1"].","
+	.$_POST["q7_present_2"].","
+	.$_POST["q11_present_3"].","
+	.$_POST["q5_future_1"].","
+	.$_POST["q8_future_2"].","
+	.$_POST["q12_future_3"].",'"
+	.$_POST["recording1"]."','"
+	.$_POST["recording2"]."','"
+	.$_POST["recording3"]."',"
+	.$_POST["q44_age"].",'"
+	.$_POST["q36_yourSex"]."','"
+	.$_POST["q33_yourEmail33"]."','"
+	.$_POST["q32_yourName[first]"]."','"
+	.$_POST["q32_yourName[middle]"]."','"
+	.$_POST["q32_yourName[last]"]."','"
+	.$_POST["q34_phoneNumber[area]"].$_POST["q34_phoneNumber[phone]"]."','"
+	.session_id()."')";
+
+	if (!mysql_query($sql)) {
+		echo "Error: " . mysql_error();
+	} else {
 	
+	$past += test_input($_POST["q3_past_1"]);
+	$past += test_input($_POST["q6_past_2"]);
+	$past += test_input($_POST["q10_past_3"]);
 
-		$sql = "INSERT INTO mindtime.imcba_survey01
-		(past1,
-		past2,
-		past3,
-		pres1,
-		pres2,
-		pres3,
-		future1,
-		future2,
-		future3,
-		rec1,
-		rec2,
-		rec3,
-		age,
-		sex,
-		email,
-		fname,
-		mname,
-		lname,
-		phone,
-		php_id) 
-		VALUES("
-		.$_POST["q3_past_1"].","
-		.$_POST["q6_past_2"].","
-		.$_POST["q10_past_3"].","
-		.$_POST["q4_present_1"].","
-		.$_POST["q7_present_2"].","
-		.$_POST["q11_present_3"].","
-		.$_POST["q5_future_1"].","
-		.$_POST["q8_future_2"].","
-		.$_POST["q12_future_3"].",'"
-		.$_POST["recording1"]."','"
-		.$_POST["recording2"]."','"
-		.$_POST["recording3"]."',"
-		.$_POST["q44_age"].",'"
-		.$_POST["q36_yourSex"]."','"
-		.$_POST["q33_yourEmail33"]."','"
-		.$_POST["q32_yourName[first]"]."','"
-		.$_POST["q32_yourName[middle]"]."','"
-		.$_POST["q32_yourName[last]"]."','"
-		.$_POST["q34_phoneNumber[area]"].$_POST["q34_phoneNumber[phone]"]."','"
-		.session_id()."')";
+	$present += test_input($_POST["q4_present_1"]);
+	$present += test_input($_POST["q7_present_2"]);
+	$present += test_input($_POST["q11_present_3"]);
+	
+	$future += test_input($_POST["q5_future_1"]);
+	$future += test_input($_POST["q8_future_2"]);
+	$future += test_input($_POST["q12_future_3"]);
 
-		if (!mysql_query($sql)) {
-			echo "Error: " . mysql_error();
-		}
-		
-		$past += test_input($_POST["q3_past_1"]);
-		$past += test_input($_POST["q6_past_2"]);
-		$past += test_input($_POST["q10_past_3"]);
-
-		$present += test_input($_POST["q4_present_1"]);
-		$present += test_input($_POST["q7_present_2"]);
-		$present += test_input($_POST["q11_present_3"]);
-		
-		$future += test_input($_POST["q5_future_1"]);
-		$future += test_input($_POST["q8_future_2"]);
-		$future += test_input($_POST["q12_future_3"]);
-
-		$past    = ($past - 3) * 25;
-		$present = ($present - 3) * 25;
-		$future  = ($future - 3) * 25;
+	$past    = ($past - 3) * 25;
+	$present = ($present - 3) * 25;
+	$future  = ($future - 3) * 25;
 
 	$gpsfx = new GPSFX(300);
 	$tempo = $gpsfx->calcGPS($future, $past, $present);
 	$app = new Tempo($tempo);
-	
-	session_destroy();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -352,4 +348,7 @@
 
 <?php 
 	}
+	$_POST = array();
+	session_destroy();
+}
 ?>
