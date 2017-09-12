@@ -71,11 +71,14 @@ shuffleArray(future);
 document.getElementById("label_3").innerHTML  = past[0];
 document.getElementById("label_6").innerHTML  = past[1];
 document.getElementById("label_10").innerHTML = past[2];
+document.getElementById("label_52").innerHTML = past[3];
 
 document.getElementById("label_4").innerHTML  = present[0];
 document.getElementById("label_7").innerHTML  = present[1];
 document.getElementById("label_11").innerHTML = present[2];
+document.getElementById("label_53").innerHTML = present[3];
 
 document.getElementById("label_5").innerHTML  = future[0];
 document.getElementById("label_8").innerHTML  = future[1];
 document.getElementById("label_12").innerHTML = future[2];
+document.getElementById("label_54").innerHTML = future[3];

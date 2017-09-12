@@ -20,15 +20,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	(past1,
 	past2,
 	past3,
+	past4,
 	pres1,
 	pres2,
 	pres3,
+	pres4,
 	future1,
 	future2,
 	future3,
+	future4,
 	rec1,
 	rec2,
 	rec3,
+	rec4,
 	age,
 	sex,
 	email,
@@ -41,15 +45,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	.$_POST["q3_past_1"].","
 	.$_POST["q6_past_2"].","
 	.$_POST["q10_past_3"].","
+	.$_POST["q52_past_4"].","
 	.$_POST["q4_present_1"].","
 	.$_POST["q7_present_2"].","
 	.$_POST["q11_present_3"].","
+	.$_POST["q53_present_4"].","
 	.$_POST["q5_future_1"].","
 	.$_POST["q8_future_2"].","
-	.$_POST["q12_future_3"].",'"
+	.$_POST["q12_future_3"].","
+	.$_POST["q54_future_4"].",'"
 	.$_POST["recording1"]."','"
 	.$_POST["recording2"]."','"
-	.$_POST["recording3"]."',"
+	.$_POST["recording3"]."','"
+	.$_POST["recording4"]."',"
 	.$_POST["q44_age"].",'"
 	.$_POST["q36_yourSex"]."','"
 	.$_POST["q33_yourEmail33"]."','"
@@ -61,25 +69,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	if (!mysql_query($sql)) {
 		echo "Error: " . mysql_error();
+		echo $sql;
 	} else {
 	
 	$past += test_input($_POST["q3_past_1"]);
 	$past += test_input($_POST["q6_past_2"]);
 	$past += test_input($_POST["q10_past_3"]);
+	$past += test_input($_POST["q52_past_4"]);
 
 	$present += test_input($_POST["q4_present_1"]);
 	$present += test_input($_POST["q7_present_2"]);
 	$present += test_input($_POST["q11_present_3"]);
+	$present += test_input($_POST["q53_present_4"]);
 	
 	$future += test_input($_POST["q5_future_1"]);
 	$future += test_input($_POST["q8_future_2"]);
 	$future += test_input($_POST["q12_future_3"]);
+	$future += test_input($_POST["q54_future_4"]);
 
-	$past    = ($past - 3) * 25;
-	$present = ($present - 3) * 25;
-	$future  = ($future - 3) * 25;
+	$past    = ($past - 4) * 25;
+	$present = ($present - 4) * 25;
+	$future  = ($future - 4) * 25;
 
-	$gpsfx = new GPSFX(300);
+	$gpsfx = new GPSFX(400);
 	$tempo = $gpsfx->calcGPS($future, $past, $present);
 	$app = new Tempo($tempo);
 ?>
