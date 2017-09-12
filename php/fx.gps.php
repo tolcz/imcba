@@ -254,8 +254,44 @@ class GPSFX {
 		
 		$badge .= ".png";
 		?>
-		<p style="text-align: center;"><img style="border:2px solid green" src="img/BADGES/<?php echo $size?>b/<?php echo $badge?>" width="<?php echo $size?>" height="<?php echo $h?>" alt="mindtime thinking style badge (<?php echo $this->_future.",".$this->_past.",".$this->_present;?>)" /></p>
+		<p style="text-align: right;"><img style="border:2px solid green" src="img/BADGES/<?php echo $size?>b/<?php echo $badge?>" width="<?php echo $size?>" height="<?php echo $h?>" alt="mindtime thinking style badge (<?php echo $this->_future.",".$this->_past.",".$this->_present;?>)" /></p>
 		<?php
+	}
+
+	public function renderIntensityBars(){
+		$scale = 100 / $this->_maxts;
+		?>
+		<div style="width: 102px; height: 81px; border: 1px solid #FFF; position: relative; margin-bottom: 8px; margin-top: 5px; ">
+			<div style="width: 24px; height: 81px; border-right: 1px solid #CCC; position: absolute; top: 0px; left: 0px;">&nbsp;</div>
+			<div style="width: 24px; height: 81px; border-right: 1px solid #CCC; position: absolute; top: 0px; left: 25px;">&nbsp;</div>
+			<div style="width: 24px; height: 81px; border-right: 1px solid #CCC; position: absolute; top: 0px; left: 50px;">&nbsp;</div>
+			
+			<div style="width: 200px; height: 17px; margin-bottom: 10px; margin-top: 5px;">
+				<div style="width: 100px; height: 15px; border: 1px solid #EC1C24; float: left; display: inline; position: relative;">
+					<div style="width: <?php echo $scale*$this->_past;?>px; top: 0px; left: 0px; position: relative; height: 15px; background: #EC1C24;">&nbsp;</div>
+				</div>
+				<div style="margin-left: 10px; float: left; display: inline; line-height: 17px;">
+					<a>Past</a>
+				</div>
+			</div>
+			<div style="width: 200px; height: 17px; margin-bottom: 10px;">
+				<div style="width: 100px; height: 15px; border: 1px solid #05924C; float: left; display: inline; position: relative;">
+					<div style="width: <?php echo $scale*$this->_present;?>px; top: 0px; left: 0px; position: relative; height: 15px; background: #05924C;">&nbsp;</div>
+				</div>
+				<div style="margin-left: 10px; float: left; display: inline; line-height: 17px;">
+					<a>Present</a>
+				</div>
+			</div>
+			<div style="width: 200px; height: 17px; margin-bottom: 15px;">
+				<div style="width: 100px; height: 15px; border: 1px solid #2E358F; float: left; display: inline; position: relative;">
+					<div style="width: <?php echo $scale*$this->_future;?>px; top: 0px; left: 0px; position: relative; height: 15px; background: #2E358F;">&nbsp;</div>
+				</div>
+				<div style="margin-left: 10px; float: left; display: inline; line-height: 17px;">
+					<a>Future</a>
+				</div>
+			</div>
+		</div>
+		<?php 
 	}
 
 }//class GPSFX{}

@@ -287,58 +287,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p style="text-align: center;">Your submission has been received.</p>
             <p>To see preliminary results <a href="#" onclick="document.getElementById('GPSframe1').style.display = 'block'; document.getElementById('ThankYouFrame').style.display = 'none';">click here</a>.
         </div>
-        <div id="GPSframe1" style="text-align: left; display: none; padding: 0px 10px 0px 10px;">
+        <div id="GPSframe1" style="text-align: justify; display: none; padding: 0px 10px 0px 10px;">
+			 <table style="width:100%">
+				 <tr>
+					 <th><?php $gpsfx->renderIntensityBars();?></th>
+					 <th><?php $gpsfx->renderBadge();?></th>
+				 </tr>
+			</table> 
 			<?php 
-				$gpsfx->renderBadge();
 				$result = $app->renderTempo('OVERVIEW');
 				$result = str_replace("Would you like to know more?", "", $result);
 				echo $result;
 			?>
 			<p>Would you like to <a href="#" onclick="document.getElementById('GPSframe1').style.display = 'none'; document.getElementById('GPSframe2').style.display = 'block';">know more</a>?</p>
 	    </div>
-        <div id="GPSframe2" style="text-align: left; display: none; padding: 0px 10px 0px 10px;">
+        <div id="GPSframe2" style="text-align: justify; display: none; padding: 0px 10px 0px 10px;">
 			<?php 
 				$result = $app->renderTempo('VIEW OF THE WORLD');
 				echo $result;
 			?>
 			<p>Would you like to <a href="#" onclick="document.getElementById('GPSframe2').style.display = 'none'; document.getElementById('GPSframe3').style.display = 'block';">know more</a>?</p>
 	    </div>
-        <div id="GPSframe3" style="text-align: left; display: none; padding: 0px 10px 0px 10px;">
+        <div id="GPSframe3" style="text-align: justify; display: none; padding: 0px 10px 0px 10px;">
 			<?php 
 				$result = $app->renderTempo('VALUES');
 				echo $result;
 			?>
 			<p>Would you like to <a href="#" onclick="document.getElementById('GPSframe3').style.display = 'none'; document.getElementById('GPSframe4').style.display = 'block';">know more</a>?</p>
 	    </div>
-        <div id="GPSframe4" style="text-align: left; display: none; padding: 0px 10px 0px 10px;">
+        <div id="GPSframe4" style="text-align: justify; display: none; padding: 0px 10px 0px 10px;">
 			<?php 
 				$result = $app->renderTempo('DECISION MAKING');
 				echo $result;
 			?>
 			<p>Would you like to <a href="#" onclick="document.getElementById('GPSframe4').style.display = 'none'; document.getElementById('GPSframe5').style.display = 'block';">know more</a>?</p>
 	    </div>
-        <div id="GPSframe5" style="text-align: left; display: none; padding: 0px 10px 0px 10px;">
+        <div id="GPSframe5" style="text-align: justify; display: none; padding: 0px 10px 0px 10px;">
 			<?php 
 				$result = $app->renderTempo('COMMUNICATION');
 				echo $result;
 			?>
 			<p>Would you like to <a href="#" onclick="document.getElementById('GPSframe5').style.display = 'none'; document.getElementById('GPSframe6').style.display = 'block';">know more</a>?</p>
 	    </div>
-        <div id="GPSframe6" style="text-align: left; display: none; padding: 0px 10px 0px 10px;">
+        <div id="GPSframe6" style="text-align: justify; display: none; padding: 0px 10px 0px 10px;">
 			<?php 
 				$result = $app->renderTempo('LEADERSHIP');
 				echo $result;
 			?>
 			<p>Would you like to <a href="#" onclick="document.getElementById('GPSframe6').style.display = 'none'; document.getElementById('GPSframe7').style.display = 'block';">know more</a>?</p>
 	    </div>
-        <div id="GPSframe7" style="text-align: left; display: none; padding: 0px 10px 0px 10px;">
+        <div id="GPSframe7" style="text-align: justify; display: none; padding: 0px 10px 0px 10px;">
 			<?php 
 				$result = $app->renderTempo('RELATIONSHIPS');
 				echo $result;
 			?>
 			<p>Would you like to <a href="#" onclick="document.getElementById('GPSframe7').style.display = 'none'; document.getElementById('GPSframe8').style.display = 'block';">know more</a>?</p>
 	    </div>
-        <div id="GPSframe8" style="text-align: left; display: none; padding: 0px 10px 0px 10px;">
+        <div id="GPSframe8" style="text-align: justify; display: none; padding: 0px 10px 0px 10px;">
 			<?php 
 				$result = $app->renderTempo('RESISTANCES');
 				echo $result;
