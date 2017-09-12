@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	if (!mysql_query($sql)) {
 		echo "Error: " . mysql_error();
-		echo $sql;
+//		echo $sql;
 	} else {
 	
 	$past += test_input($_POST["q3_past_1"]);
